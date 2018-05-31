@@ -1,24 +1,27 @@
 @extends('main')
 
-@section('title', '| Show Case')
+@section('title')
+    | {{ $page->post_title }}
+@endsection
 
 @section('content')
+
     <div class="blog-header">
-        <h1 class="blog-title">Show Case</h1>
+        <h1 class="blog-title">{{ $page->post_title }}</h1>
+        <p>{{ date('M j, Y', strtotime( $page->created_at )) }} <a href="{{ route('posts.edit', $page->id) }}">{Edit}</a></p>
     </div>
 
     <div class="row">
         <div class="col-sm-8 blog-main">
 
             <div class="blog-content">
-                <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
-                ...
+                {!! nl2br( $page->post_content ) !!}
             </div><!-- /.blog-post -->
 
         </div><!-- /.blog-main -->
 
         <!--Sidebar-->
         @include('partials._sidebar')
-
     </div><!-- /.row -->
+
 @endsection

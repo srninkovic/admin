@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'PagesController@getIndex');
-Route::get('show-case', 'PagesController@getShowCase');
-Route::get('services', 'PagesController@getServices');
-Route::get('contact', 'PagesController@getContact');
+Route::get('/', 'PagesController@getIndex')->name('home');
+Route::resource('pages', 'PagesController');
+Route::resource('posts', 'PostsController');
+Route::resource('categories', 'CategoriesController');
+
 Auth::routes();

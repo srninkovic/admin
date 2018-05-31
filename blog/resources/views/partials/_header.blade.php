@@ -14,50 +14,80 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link rel="stylesheet" href="{{ asset('css/ie10-viewport-bug-workaround.css') }}" />
-
-        <!-- Custom styles for this template -->
-        <link rel="stylesheet" href="{{ asset('css/blog.css') }}" />
-
         @yield('stylesheet')
     </head>
     <body>
 
-        <div class="blog-masthead">
-            <div class="container">
-                <nav class="blog-nav">
-                    <ul class="nav navbar-nav">
-                        <li><a class="blog-nav-item {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a></li>
-                        <li><a class="blog-nav-item {{ Request::is('show-case') ? 'active' : '' }}" href="/show-case">Show Case</a></li>
-                        <li><a class="blog-nav-item {{ Request::is('services') ? 'active' : '' }}" href="/services">Services</a></li>
-                        <li><a class="blog-nav-item {{ Request::is('contact') ? 'active' : '' }}" href="/contact">Contact</a></li>
-                    </ul>
+            <div class="blog-masthead">
+                <div class="container">
+                    <nav class="blog-nav">
+                        <ul class="nav navbar-nav">
+                            <li><a class="blog-nav-item {{ null == Request::query() ? 'active' : '' }}" href="/">Home</a></li>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a class="blog-nav-item {{ Request::is('login') ? 'active' : '' }}" href="{{ route('login') }}">Login</a></li>
-                            <li><a class="blog-nav-item {{ Request::is('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                            @if( Helper::get_pages() )
+                                @foreach( Helper::get_pages() as $page )
+                                    <li><a class="blog-nav-item {{ $page->id == Request::query('page_id') ? 'active' : '' }}" href="/?page_id={{ $page->id }}">{{ $page->post_title }}</a></li>
+                                @endforeach
+                            @endif
+                        </ul>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <!-- Right Side Of Navbar -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <!-- Authentication Links -->
+                            @if (Auth::guest())
+                                <li><a class="blog-nav-item {{ Request::is('login') ? 'active' : '' }}" href="{{ route('login') }}">Login</a></li>
+                                <li><a class="blog-nav-item {{ Request::is('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a></li>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </nav>
+                            @else
+
+                                <li class="dropdown">
+                                    <a href="#" class="blog-nav-item dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{ route('posts.index') }}">All Posts</a></li>
+                                        <li><a href="{{ route('posts.create') }}">Add New</a></li>
+                                        <li><a href="{{ route('categories.index') }}">Categories</a></li>
+
+                                        <li><hr/></li>
+
+                                        <li><a href="{{ route('pages.index') }}">All Pages</a></li>
+                                        <li><a href="{{ route('pages.create') }}">Add New</a></li>
+
+                                        <li><hr/></li>
+
+                                        <li>
+                                            <a class="blog-nav-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endif
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </div>
+
+            {{--
+                Check if there is a success Session key
+                If So display the Session key value
+
+                More to this later
+            --}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        @if( Session::has('success') )
+                            <div class="mt-5 alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
+
+                    </div>
+                </div>
+            </div>

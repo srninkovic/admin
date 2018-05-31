@@ -1,43 +1,84 @@
-
 @extends('main')
 
-@section('title', '| Welcome to my Blog')
+@section('title', '| Pages')
 
 @section('content')
-    <div class="blog-header">
-        <h1 class="blog-title">The Bootstrap Blog</h1>
-        <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+
+    <div class="container">
+
+        {{-- Check if current user is logged-in or a guest --}}
+        @if (Auth::guest())
+
+            <p class="mt-5">Cheatn?, please <a href="/login/">login</a> to continue.</p>
+
+        @else
+
+            <div class="blog-header">
+                <h1 class="blog-title">Pages <a class="btn btn-sm btn-primary" href="{{ route('pages.create') }}">Add New</a></h1>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <table class="table">
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Content</th>
+                            <th>Date</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            {{-- Blade if and else --}}
+                            @if( $pages->count() )
+                                {{-- Blade foreach --}}
+                                @foreach( $pages as $page )
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <a href="{{ route('pages.edit', $page->id) }}">
+                                                    {{ $page->post_title }}
+                                                </a>
+                                            </strong>
+                                        </td>
+                                        <td>{{ $page->author_ID }}</td>
+                                        <td>
+                                            @if ( strlen( $page->post_content ) > 60 )
+                                                {{ substr( $page->post_content, 0, 60 ) }} ...
+                                            @else
+                                                {{ $page->post_content }}
+                                            @endif
+                                        </td>
+                                        <td>Published {{ date( 'j/m/Y', strtotime( $page->created_at ) ) }}</td>
+                                        <td>
+                                            <form class="d-inline" action="{{ route('pages.destroy', $page->id) }}" method="POST">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+
+                                                <input type="submit" value="Delete" class="btn btn-sm btn-danger" />
+                                            </form>
+
+                                            <a class="btn btn-sm btn-info" href="{{ route('pages.edit', $page->id) }}">Edit</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+
+                                <tr>
+                                    <td colspan="5">No page has been added yet!</td>
+                                </tr>
+
+                            @endif
+                        </tr>
+                    </table>
+
+                    {{ $pages->links() }}
+
+                </div>
+            </div>
+
+        @endif
+
     </div>
 
-    <div class="row">
-        <div class="col-sm-8 blog-main">
-
-            <div class="blog-post">
-            <h2 class="blog-post-title">Another blog post</h2>
-                <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
-
-                <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                <blockquote>
-                    <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </blockquote>
-
-                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            </div><!-- /.blog-post -->
-
-            ...
-
-            <nav>
-                <ul class="pager">
-                    <li><a href="#">Previous</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </nav>
-
-        </div><!-- /.blog-main -->
-
-        <!--Sidebar-->
-        @include('partials._sidebar')
-
-    </div><!-- /.row -->
 @endsection
