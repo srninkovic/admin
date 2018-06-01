@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| Edit Post')
+@section('title', '| Add New Post')
 
 @section('content')
 
@@ -23,7 +23,7 @@
 						Check route:list for `posts.update` for more info
 						URL is posts/{post}, `{post}` meaning that we have to supply ID
 					--}}
-					<form action="{{ route('posts.update', $post->id) }}" method="POST">
+					<form enctype="multipart/form-data" action="{{ route('posts.update', $post->id) }}" method="POST">
 						{{ csrf_field() }}
 
 						{{--
@@ -71,10 +71,24 @@
 
 						<div class="form-group">
 							<label for="title">Category</label> <br/>
+
+							<?php $categories = Helper::get_categories(); ?>
 							<select name="category_ID" id="category_ID">
-								<option value="1" {{ 1 == $post->category_ID ? 'selected="selected"' : '' }}>1</option>
-								<option value="2" {{ 2 == $post->category_ID ? 'selected="selected"' : '' }}>2</option>
+								<?php
+									if( $categories ) {
+										foreach( $categories as $category ) {
+											?>
+												<option value="{{ $category->id }}" {{ $category->id == $post->category_ID ? 'selected="selected"' : '' }}>{{ $category->category_name }}</option>
+											<?php
+										}
+									}
+								?>
 							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="post_thumbnail">Thumbnail</label> <br/>
+							<input type="file" name="post_thumbnail" id="post_thumbnail" />
 						</div>
 
 						<div class="form-group">

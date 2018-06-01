@@ -20,8 +20,9 @@
 			<div class="row">
 				<div class="push-md-2 col-md-8">
 
-					<form action="{{ route('posts.store') }}" method="POST">
+					<form enctype="multipart/form-data" action="{{ route('posts.store') }}" method="POST">
 						{{ csrf_field() }}
+
 						<input type="hidden" name="author_ID" value="{{ Auth::id() }}" />
 						<input type="hidden" name="post_type" value="post" />
 
@@ -60,10 +61,24 @@
 
 						<div class="form-group">
 							<label for="title">Category</label> <br/>
+
+							<?php $categories = Helper::get_categories(); ?>
 							<select name="category_ID" id="category_ID">
-								<option value="1">1</option>
-								<option value="2">2</option>
+								<?php
+									if( $categories ) {
+										foreach( $categories as $category ) {
+											?>
+												<option value="{{ $category->id }}">{{ $category->category_name }}</option>
+											<?php
+										}
+									}
+								?>
 							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="post_thumbnail">Thumbnail</label> <br/>
+							<input type="file" name="post_thumbnail" id="post_thumbnail" />
 						</div>
 
 						<div class="form-group">

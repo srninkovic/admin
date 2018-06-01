@@ -8,11 +8,17 @@
 
     <div class="blog-header">
         <h1 class="blog-title">{{ $post->post_title }}</h1>
-        <p> {{ Helper::get_category( $post->category_ID ) }} / {{ date('M j, Y', strtotime( $post->created_at )) }}<a href="{{ route('posts.edit', $post->id) }}">{Edit}</a></p>
+        <p>{{ Helper::get_category( $post->category_ID ) }} / {{ date('M j, Y', strtotime( $post->created_at )) }} <a href="{{ route('posts.edit', $post->id) }}">{Edit}</a></p>
     </div>
 
     <div class="row">
         <div class="col-sm-8 blog-main">
+
+            @if( $post->post_thumbnail )
+                <div class="blog-thumbnail">
+                    <img src="/uploads/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}" />
+                </div>
+            @endif
 
             <div class="blog-content">
                 {!! nl2br( $post->post_content ) !!}

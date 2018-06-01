@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Post;
+use Image;
 use Session;
 
 class PostsController extends Controller
@@ -64,6 +65,17 @@ class PostsController extends Controller
         $post->post_slug        = $request->post_slug;
         $post->post_content     = $request->post_content;
         $post->category_ID      = $request->category_ID;
+
+        // Check if file is present
+        if( $request->hasFile('post_thumbnail') ) {
+            $post_thumbnail     = $request->file('post_thumbnail');
+            $filename           = time() . '.' . $post_thumbnail->getClientOriginalExtension();
+
+            Image::make($post_thumbnail)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_thumbnail = $filename;
+        }
 
         $post->save();
 
@@ -126,6 +138,17 @@ class PostsController extends Controller
         $post->post_slug        = $request->input('post_slug');
         $post->post_content     = $request->input('post_content');
         $post->category_ID      = $request->input('category_ID');
+
+        // Check if file is present
+        if( $request->hasFile('post_thumbnail') ) {
+            $post_thumbnail     = $request->file('post_thumbnail');
+            $filename           = time() . '.' . $post_thumbnail->getClientOriginalExtension();
+
+            Image::make($post_thumbnail)->resize(600, 600)->save( public_path('/uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_thumbnail = $filename;
+        }
 
         $post->save();
 
