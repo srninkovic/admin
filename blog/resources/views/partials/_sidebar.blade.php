@@ -6,6 +6,13 @@
     </div>
 
     <div class="sidebar-module">
+        <h4>Search</h4>
+        <form action="/search/" method="GET">
+            <input type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search this site..." />
+        </form>
+    </div>
+
+    <div class="sidebar-module">
         <h4>Archives</h4>
         <ol class="list-unstyled">
             <li><a href="#">March 2014</a></li>
