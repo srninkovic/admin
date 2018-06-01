@@ -12,8 +12,13 @@
 */
 
 Route::get('/', 'PagesController@getIndex')->name('home');
+Route::get('article/{slug}', 'ArticlesController@getSingle')->name('single');
+Route::get('articles', 'ArticlesController@getIndex');
 Route::resource('pages', 'PagesController');
 Route::resource('posts', 'PostsController');
 Route::resource('categories', 'CategoriesController');
+Route::resource('comments', 'CommentsController');
+Route::post('comments/{comment}/approve', 'CommentsController@approveComment')->name('comment.approve');
+Route::post('comments/{comment}/unapprove', 'CommentsController@unapproveComment')->name('comment.unapprove');
 
 Auth::routes();

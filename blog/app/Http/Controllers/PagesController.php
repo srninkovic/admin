@@ -154,52 +154,38 @@ class PagesController extends Controller
 
 
     /**
-     * Front page
-     */
-    public function getIndex( Request $request ) {
+         * Front page
+         */
+        public function getIndex( Request $request ) {
 
-        // Get query string
-        $page_id    = $request->query('page_id');
-        $post_id    = $request->query('p');
+            // Get query string
+            $page_id    = $request->query('page_id');
 
-        // If page_id is viewed use `pages.page.php` file to handle the display
-        // otherwise use and display 404.blade.php file
-        if( $page_id ) :
+            // If page_id is viewed use `pages.page.php` file to handle the display
+            // otherwise use and display 404.blade.php file
+            if( $page_id ) :
 
-            $posts = Post::where('id', $page_id)
-                        ->where('post_type', 'page')
-                        ->first();
+                $posts = Post::where('id', $page_id)
+                            ->where('post_type', 'page')
+                            ->first();
 
-            // Check if page exist
-            if( $posts )
-                return view('pages.page', [ 'page' => $posts ]);
-            else
-                return view('errors.404');
+                // Check if page exist
+                if( $posts )
+                    return view('pages.page', [ 'page' => $posts ]);
+                else
+                    return view('errors.404');
 
-        // If post_id is viewed use `pages.single.php` file to handle the display
-        // otherwise use and display 404.blade.php file
-        elseif ( $post_id ) :
+            // If none of the above is true, then display most recently added Blot posts
+            else :
 
-            $posts = Post::where('id', $post_id)
-                        ->where('post_type', 'post')
-                        ->first();
+                $posts = Post::where('post_type', 'post')
+                        ->paginate( 6 );
 
-            // Check if page exist
-            if( $posts )
-                return view('pages.single', [ 'post' => $posts ]);
-            else
-                return view('errors.404');
+                // It replaces the previous `index.blade.php` blade file that is now used in displaying lists of added pages
+                return view('pages.frontpage', [ 'posts' => $posts ]);
 
-        // If none of the above is true, then display most recently added Blot posts
-        else :
+            endif;
+        }
 
-            $posts = Post::where('post_type', 'post')
-                    ->paginate( 6 );
-
-            // It replaces the previous `index.blade.php` blade file that is now used in displaying lists of added pages
-            return view('pages.frontpage', [ 'posts' => $posts ]);
-
-        endif;
-    }
 
 }
