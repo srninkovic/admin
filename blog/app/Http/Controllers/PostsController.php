@@ -77,6 +77,56 @@ class PostsController extends Controller
             $post->post_thumbnail = $filename;
         }
 
+        if( $request->hasFile('post_image') ) {
+            $post_image     = $request->file('post_image');
+            $filename           = time() . '.' . $post_image->getClientOriginalExtension();
+
+            Image::make($post_image)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image = $filename;
+        }
+
+        if( $request->hasFile('post_image2') ) {
+            $post_image2     = $request->file('post_image2');
+            $filename           = time() . '.' . $post_image2->getClientOriginalExtension();
+
+            Image::make($post_image2)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image2 = $filename;
+        }
+
+        if( $request->hasFile('post_image3') ) {
+            $post_image3     = $request->file('post_image3');
+            $filename           = time() . '.' . $post_image3->getClientOriginalExtension();
+
+            Image::make($post_image3)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image3 = $filename;
+        }
+
+        if( $request->hasFile('post_image4') ) {
+            $post_image4     = $request->file('post_image4');
+            $filename           = time() . '.' . $post_image4->getClientOriginalExtension();
+
+            Image::make($post_image4)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image4 = $filename;
+        }
+
+        if( $request->hasFile('post_image5') ) {
+            $post_image5     = $request->file('post_image5');
+            $filename           = time() . '.' . $post_image5->getClientOriginalExtension();
+
+            Image::make($post_image5)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image5 = $filename;
+        }
+
         $post->save();
 
         // Store data for only a single request and destory
@@ -148,6 +198,56 @@ class PostsController extends Controller
 
             // Set post-thumbnail url
             $post->post_thumbnail = $filename;
+        }
+
+        if( $request->hasFile('post_image') ) {
+            $post_image     = $request->file('post_image');
+            $filename           = time() . '.' . $post_image->getClientOriginalExtension();
+
+            Image::make($post_image)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image = $filename;
+        }
+
+        if( $request->hasFile('post_image2') ) {
+            $post_image2     = $request->file('post_image2');
+            $filename           = time() . '.' . $post_image2->getClientOriginalExtension();
+
+            Image::make($post_image2)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image2 = $filename;
+        }
+
+        if( $request->hasFile('post_image3') ) {
+            $post_image3     = $request->file('post_image3');
+            $filename           = time() . '.' . $post_image3->getClientOriginalExtension();
+
+            Image::make($post_image3)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image3 = $filename;
+        }
+
+        if( $request->hasFile('post_image4') ) {
+            $post_image4     = $request->file('post_image4');
+            $filename           = time() . '.' . $post_image4->getClientOriginalExtension();
+
+            Image::make($post_image4)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image4 = $filename;
+        }
+
+        if( $request->hasFile('post_image5') ) {
+            $post_image5     = $request->file('post_image5');
+            $filename           = time() . '.' . $post_image5->getClientOriginalExtension();
+
+            Image::make($post_image5)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+
+            // Set post-thumbnail url
+            $post->post_image5 = $filename;
         }
 
         $post->save();

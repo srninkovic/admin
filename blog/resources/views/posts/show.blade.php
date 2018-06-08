@@ -25,6 +25,36 @@
 						<img src="/uploads/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}" />
 					</div>
 
+                    <hr />
+
+                    <div class="blog-thumbnail">
+                        <img src="/uploads/{{ $post->post_image }}" alt="{{ $post->post_image }}" />
+                    </div>
+
+                    <hr />
+
+                    <div class="blog-thumbnail">
+                        <img src="/uploads/{{ $post->post_image2 }}" alt="{{ $post->post_image2 }}" />
+                    </div>
+
+                    <hr />
+
+                    <div class="blog-thumbnail">
+                        <img src="/uploads/{{ $post->post_image3 }}" alt="{{ $post->post_image3 }}" />
+                    </div>
+
+                    <hr />
+
+                    <div class="blog-thumbnail">
+                        <img src="/uploads/{{ $post->post_image4 }}" alt="{{ $post->post_image4 }}" />
+                    </div>
+
+                    <hr />
+
+                    <div class="blog-thumbnail">
+                        <img src="/uploads/{{ $post->post_image5 }}" alt="{{ $post->post_image5 }}" />
+                    </div>
+
 					<div class="blog-content">
 						{{-- Inserts HTML line breaks before all newlines in a string --}}
 						{!! nl2br( $post->post_content ) !!}

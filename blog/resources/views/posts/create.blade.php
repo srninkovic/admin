@@ -77,9 +77,44 @@
 						</div>
 
 						<div class="form-group">
-							<label for="post_thumbnail">Thumbnail</label> <br/>
+							<label for="post_thumbnail">image0</label> <br/>
 							<input type="file" name="post_thumbnail" id="post_thumbnail" />
 						</div>
+
+                        <hr />
+
+                        <div class="form-group">
+							<label for="post_image">image1</label> <br/>
+							<input type="file" name="post_image" id="post_image" />
+						</div>
+
+                        <hr />
+
+                        <div class="form-group">
+                        	<label for="post_image2">image2</label> <br/>
+                        	<input type="file" name="post_image2" id="post_image2" />
+                        </div>
+
+                        <hr />
+
+                        <div class="form-group">
+                            <label for="post_image3">image3</label> <br/>
+                            <input type="file" name="post_image3" id="post_image3" />
+                        </div>
+
+                        <hr />
+
+                        <div class="form-group">
+                            <label for="post_image4">image4</label> <br/>
+                            <input type="file" name="post_image4" id="post_image4" />
+                        </div>
+
+                        <hr />
+
+                        <div class="form-group">
+                            <label for="post_image5">image5</label> <br/>
+                            <input type="file" name="post_image5" id="post_image5" />
+                        </div>
 
 						<div class="form-group">
 							<input type="submit" class="btn btn-primary" value="Publish" />
