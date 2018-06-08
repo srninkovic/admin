@@ -23,9 +23,9 @@
 					<table class="table">
 						<tr>
 							<th>Title</th>
-							<th>Author</th>
+							{{-- <th>Author</th> --}}
 							<th>Content</th>
-							<th>Category</th>
+							{{-- <th>Category</th> --}}
 							<th>Date</th>
 							<th>&nbsp;</th>
 						</tr>
@@ -37,12 +37,12 @@
 									<tr>
 										<td>
 											<strong>
-												<a href="{{ route('posts.edit', $post->id) }}">
+												<a href="/article/{{ $post->post_slug }}">
 													{{ $post->post_title }}
 												</a>
 											</strong>
 										</td>
-										<td>{{ $post->author_ID }}</td>
+										{{-- <td>{{ $post->author_ID }}</td> --}}
 										<td>
 											@if ( strlen( $post->post_content ) > 60 )
 												{{ substr( $post->post_content, 0, 60 ) }} ...
@@ -50,11 +50,11 @@
 												{{ $post->post_content }}
 											@endif
 										</td>
-										<td>
+									{{--	<td>
 											<a href="#">
 												{{ $post->category_ID }}
 											</a>
-										</td>
+										</td> --}}
 										<td>Published {{ date( 'j/m/Y', strtotime( $post->created_at ) ) }}</td>
 										<td>
                                             <form class="d-inline" action="{{ route('posts.destroy', $post->id) }}" method="POST">

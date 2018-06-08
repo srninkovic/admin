@@ -62,8 +62,16 @@ class PostsController extends Controller
         $post->author_ID        = $request->author_ID;
         $post->post_type        = $request->post_type;
         $post->post_title       = $request->post_title;
+        $post->post_title2      = $request->post_title2;
+        $post->post_title3      = $request->post_title3;
+        $post->post_title4      = $request->post_title4;
+        $post->post_title5      = $request->post_title5;
         $post->post_slug        = $request->post_slug;
         $post->post_content     = $request->post_content;
+        $post->post_content2    = $request->post_content2;
+        $post->post_content3    = $request->post_content3;
+        $post->post_content4    = $request->post_content4;
+        $post->post_content5    = $request->post_content5;
         $post->category_ID      = $request->category_ID;
 
         // Check if file is present
@@ -185,8 +193,16 @@ class PostsController extends Controller
         $post->author_ID        = $request->input('author_ID');
         $post->post_type        = $request->input('post_type');
         $post->post_title       = $request->input('post_title');
+        $post->post_title2      = $request->input('post_title2');
+        $post->post_title3      = $request->input('post_title3');
+        $post->post_title4      = $request->input('post_title4');
+        $post->post_title5      = $request->input('post_title5');
         $post->post_slug        = $request->input('post_slug');
         $post->post_content     = $request->input('post_content');
+        $post->post_content2     = $request->input('post_content2');
+        $post->post_content3     = $request->input('post_content3');
+        $post->post_content4     = $request->input('post_content4');
+        $post->post_content5     = $request->input('post_content5');
         $post->category_ID      = $request->input('category_ID');
 
         // Check if file is present

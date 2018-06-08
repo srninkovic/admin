@@ -37,6 +37,50 @@
 	                        @endif
 						</div>
 
+                        <div class="form-group{{ $errors->has('post_title2') ? ' has-error' : '' }}">
+							<label for="post_title2">Title2</label> <br/>
+							<input type="text" name="post_title2" id="post_title" value="{{ old('post_title2') }}" />
+
+							@if ($errors->has('post_title2'))
+	                            <span class="help-block">
+	                                <strong>{{ $errors->first('post_title2') }}</strong>
+	                            </span>
+	                        @endif
+						</div>
+
+                        <div class="form-group{{ $errors->has('post_title3') ? ' has-error' : '' }}">
+                            <label for="post_title3">Title3</label> <br/>
+                            <input type="text" name="post_title3" id="post_title" value="{{ old('post_title3') }}" />
+
+                            @if ($errors->has('post_title3'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('post_title3') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group{{ $errors->has('post_title4') ? ' has-error' : '' }}">
+                            <label for="post_title4">Title4</label> <br/>
+                            <input type="text" name="post_title4" id="post_title" value="{{ old('post_title4') }}" />
+
+                            @if ($errors->has('post_title4'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('post_title4') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group{{ $errors->has('post_title5') ? ' has-error' : '' }}">
+                            <label for="post_title5">Title5</label> <br/>
+                            <input type="text" name="post_title5" id="post_title" value="{{ old('post_title5') }}" />
+
+                            @if ($errors->has('post_title5'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('post_title5') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
 						<div class="form-group{{ $errors->has('post_slug') ? ' has-error' : '' }}">
 							<label for="post_slug">Slug</label> <br/>
 							<input type="text" name="post_slug" id="post_slug" value="{{ old('post_slug') }}" />
@@ -59,7 +103,51 @@
 	                        @endif
 						</div>
 
-						<div class="form-group">
+                        <div class="form-group{{ $errors->has('post_content2') ? ' has-error' : '' }}">
+                            <label for="post_content2">Content2</label> <br/>
+                            <textarea name="post_content2" id="post_content2" cols="80" rows="6">{{ old('post_content2') }}</textarea>
+
+                            @if ($errors->has('post_content2'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('post_content2') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group{{ $errors->has('post_content3') ? ' has-error' : '' }}">
+                            <label for="post_content3">Content3</label> <br/>
+                            <textarea name="post_content3" id="post_content3" cols="80" rows="6">{{ old('post_content3') }}</textarea>
+
+                            @if ($errors->has('post_content3'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('post_content3') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group{{ $errors->has('post_content4') ? ' has-error' : '' }}">
+                            <label for="post_content4">Content4</label> <br/>
+                            <textarea name="post_content4" id="post_content4" cols="80" rows="6">{{ old('post_content4') }}</textarea>
+
+                            @if ($errors->has('post_content4'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('post_content4') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group{{ $errors->has('post_content5') ? ' has-error' : '' }}">
+                            <label for="post_content5">Content5</label> <br/>
+                            <textarea name="post_content5" id="post_content5" cols="80" rows="6">{{ old('post_content5') }}</textarea>
+
+                            @if ($errors->has('post_content5'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('post_content5') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+					<!-- <div class="form-group">
 							<label for="title">Category</label> <br/>
 
 							<?php $categories = Helper::get_categories(); ?>
@@ -74,7 +162,7 @@
 									}
 								?>
 							</select>
-						</div>
+						</div> -->
 
 						<div class="form-group">
 							<label for="post_thumbnail">image0</label> <br/>

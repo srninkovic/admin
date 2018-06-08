@@ -6,12 +6,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name') }} @yield('title')</title>
 
-        <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 
         @yield('stylesheet')
@@ -22,8 +20,8 @@
             <div class="container">
                 <nav class="blog-nav">
                     <ul class="nav navbar-nav">
-                        <li><a class="blog-nav-item {{ null == Request::query() ? 'active' : '' }}" href="/">Home</a></li>
-                        <li><a class="blog-nav-item {{ Request::is('articles') ? 'active' : '' }}" href="/articles">Articles</a></li>
+                        <li><a class="blog-nav-item {{ null == Request::query() ? 'active' : '' }}" href="/adminpanel">Home</a></li>
+                        {{-- <!-- <li><a class="blog-nav-item {{ Request::is('articles') ? 'active' : '' }}" href="/articles">Articles</a></li> --> --}}
 
                         @if( Helper::get_pages() )
                             @foreach( Helper::get_pages() as $page )
@@ -32,7 +30,6 @@
                         @endif
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
@@ -47,19 +44,18 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ route('posts.index') }}">All Posts</a></li>
+                                    <li><a href="{{ route('posts.index') }}">All pages</a></li>
                                     <li><a href="{{ route('posts.create') }}">Add New</a></li>
-                                    <li><a href="{{ route('categories.index') }}">Categories</a></li>
+                                    {{--<!-- <li><a href="{{ route('categories.index') }}">Categories</a></li> -->
 
                                     <li><hr/></li>
 
-                                    <li><a href="{{ route('pages.index') }}">All Pages</a></li>
-                                    <li><a href="{{ route('pages.create') }}">Add New</a></li>
+                                    <!-- <li><a href="{{ route('pages.index') }}">All Pages</a></li>
+                                    <li><a href="{{ route('pages.create') }}">Add New</a></li> -->
 
                                     <li><hr/></li>
 
-                                    <!--we'll work on this later-->
-                                    <li><a href="{{ route('comments.index') }}">All Comments</a></li>
+                                    <!-- <li><a href="{{ route('comments.index') }}">All Comments</a></li> --> --}}
 
                                     <li><hr/></li>
 
@@ -78,13 +74,6 @@
             </div>
         </div>
 
-
-            {{--
-                Check if there is a success Session key
-                If So display the Session key value
-
-                More to this later
-            --}}
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

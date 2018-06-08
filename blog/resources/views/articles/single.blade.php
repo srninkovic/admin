@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="blog-header">
-        <h1 class="blog-title">{{ $post->post_title }}</h1>
+        <h1 class="blog-title">{{ $post->post_title }} + {{ $post->post_title2 }} + {{ $post->post_title3 }} + {{ $post->post_title4 }} + {{ $post->post_title5 }}</h1>
         <p>{{ Helper::get_category( $post->category_ID ) }} / {{ date('M j, Y', strtotime( $post->created_at )) }} <a href="{{ route('posts.edit', $post->id) }}">{Edit}</a></p>
     </div>
 
@@ -51,27 +51,27 @@
             @endif
 
             <div class="blog-content">
-                {!! nl2br( $post->post_content ) !!}
-            </div><!-- /.blog-post -->
+                {!! nl2br( $post->post_content ) !!} <br />
+                {!! nl2br( $post->post_content2 ) !!} <br />
+                {!! nl2br( $post->post_content3 ) !!} <br />
+                {!! nl2br( $post->post_content4 ) !!} <br />
+                {!! nl2br( $post->post_content5 ) !!} <br />
+            </div>
 
-            <section class="mt-5" id="respond">
-                <h2>Comments</h2>
-
-                {{--display approved comments--}}
+            {{-- <section class="mt-5" id="respond">
+                <h2>Comments</h2> --}}
                 <?php
-                    echo Helper::get_comments( $post->id );
+                    // echo Helper::get_comments( $post->id );
                 ?>
             </section>
 
-            <section class="mt-5" id="comment">
-                {{-- display comment form --}}
+            {{-- <section class="mt-5" id="comment">
                 @includeIf('comments.form', ['post_id' => $post->id])
-            </section>
+            </section> --}}
+        </div>
 
-        </div><!-- /.blog-main -->
 
-        <!--Sidebar-->
-        @include('partials._sidebar')
-    </div><!-- /.row -->
+        {{-- @include('partials._sidebar') --}}
+    </div>
 
 @endsection

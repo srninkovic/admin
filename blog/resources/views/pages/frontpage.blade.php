@@ -3,6 +3,12 @@
 @section('title', '| Blog Tutorial')
 
 @section('content')
+
+@if (Auth::guest())
+
+    <p class="mt-5">Please <a href="/login/">login</a></p>
+
+@else
     <div class="blog-header">
         <h1 class="blog-title">The Bootstrap Blog</h1>
         <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
@@ -47,10 +53,13 @@
                 </nav>
             @endif
 
-        </div><!-- /.blog-main -->
+        </div>
 
-        <!--Sidebar-->
-        @include('partials._sidebar')
 
-    </div><!-- /.row -->
+        {{-- @include('partials._sidebar') --}}
+
+    </div>
+
+    @endif
+
 @endsection

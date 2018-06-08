@@ -47,10 +47,9 @@
                 </nav>
             @endif
 
-        </div><!-- /.blog-main -->
+        </div>
+        {{--@include('partials._sidebar')--}}
 
-        <!--Sidebar-->
-        @include('partials._sidebar')
 
-    </div><!-- /.row -->
+    </div>
 @endsection

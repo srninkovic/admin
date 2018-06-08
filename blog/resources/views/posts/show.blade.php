@@ -14,7 +14,7 @@
 		@else
 
 			<div class="blog-header">
-		        <h1 class="blog-title">{{ $post->post_title }}</h1>
+		        <h1 class="blog-title">{{ $post->post_title }} + {{ $post->post_title2 }} + {{ $post->post_title3 }} + {{ $post->post_title4 }} + {{ $post->post_title5 }}</h1>
 		        <p>{{ Helper::get_category( $post->category_ID ) }} / {{ date('M j, Y', strtotime( $post->created_at )) }} <a href="{{ route('posts.edit', $post->id) }}">{Edit}</a></p>
 		    </div>
 
@@ -56,8 +56,11 @@
                     </div>
 
 					<div class="blog-content">
-						{{-- Inserts HTML line breaks before all newlines in a string --}}
-						{!! nl2br( $post->post_content ) !!}
+						{!! nl2br( $post->post_content ) !!} <br />
+                        {!! nl2br( $post->post_content2 ) !!} <br />
+                        {!! nl2br( $post->post_content3 ) !!} <br />
+                        {!! nl2br( $post->post_content4 ) !!} <br />
+                        {!! nl2br( $post->post_content5 ) !!} <br />
 					</div>
 
 				</div>

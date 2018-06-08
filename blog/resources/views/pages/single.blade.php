@@ -16,16 +16,16 @@
 
             <div class="blog-content">
                 {!! nl2br( $post->post_content ) !!}
-            </div><!-- /.blog-post -->
+            </div>
 
             <section class="mt-5" id="comment">
                 <p>Comment goes here!</p>
             </section>
 
-        </div><!-- /.blog-main -->
+        </div>
 
-        <!--Sidebar-->
-        @include('partials._sidebar')
-    </div><!-- /.row -->
+
+        {{-- @include('partials._sidebar') --}}
+    </div>
 
 @endsection

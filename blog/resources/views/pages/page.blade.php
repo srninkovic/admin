@@ -16,12 +16,12 @@
 
             <div class="blog-content">
                 {!! nl2br( $page->post_content ) !!}
-            </div><!-- /.blog-post -->
+            </div>
 
-        </div><!-- /.blog-main -->
+        </div>
 
-        <!--Sidebar-->
-        @include('partials._sidebar')
-    </div><!-- /.row -->
+
+        {{-- @include('partials._sidebar') --}}
+    </div>
 
 @endsection
