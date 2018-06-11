@@ -20,7 +20,7 @@
             <div class="container">
                 <nav class="blog-nav">
                     <ul class="nav navbar-nav">
-                        <li><a class="blog-nav-item {{ null == Request::query() ? 'active' : '' }}" href="/adminpanel">Home</a></li>
+                        <li><a class="blog-nav-item {{ null == Request::query() ? 'active' : '' }}" href="/admin">Home</a></li>
                         {{-- <!-- <li><a class="blog-nav-item {{ Request::is('articles') ? 'active' : '' }}" href="/articles">Articles</a></li> --> --}}
 
                         @if( Helper::get_pages() )

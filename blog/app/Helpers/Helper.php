@@ -109,31 +109,6 @@ class Helper
         return $page;
     }
 
-    /**
-     * Return all category if any otherwise false
-     */
-    public static function get_categories() {
-
-        $categories = Category::get();
-
-        if( $categories )
-            return $categories;
-
-        return false;
-    }
-
-    /**
-     * Return category data
-     */
-    public static function get_category( $category_id ) {
-
-        if( empty( $category_id ) )
-            return;
-
-        $category = Category::where('id', $category_id)->first();
-
-        return $category;
-    }
 
     /**
      * Get lists of comments

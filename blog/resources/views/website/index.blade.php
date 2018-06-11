@@ -48,34 +48,6 @@
 						<p class="grid__item-description"><?php  $content = App\Post::find(1); echo $content->post_content5 ?></p>
 					</div>
 				</div>
-				<!-- <div class="grid__item">
-					<div class="scroll-img" style="background-image: url(img/16.jpg);"></div>
-					<div class="grid__item-titlewrap">
-						<h2 class="grid__item-title">#less</h2>
-						<p class="grid__item-description">Timeless manners count</p>
-					</div>
-				</div>
-				<div class="grid__item">
-					<div class="scroll-img" style="background-image: url(img/17.jpg);"></div>
-					<div class="grid__item-titlewrap">
-						<h2 class="grid__item-title">#only</h2>
-						<p class="grid__item-description">Together we can sit</p>
-					</div>
-				</div> -->
-				<!-- <div class="grid__item">
-					<div class="scroll-img" style="background-image: url(img/18.jpg);"></div>
-					<div class="grid__item-titlewrap">
-						<h2 class="grid__item-title">#need</h2>
-						<p class="grid__item-description">The new kid on the block</p>
-					</div>
-				</div>
-				<div class="grid__item">
-					<div class="scroll-img" style="background-image: url(img/11.jpg);"></div>
-					<div class="grid__item-titlewrap">
-						<h2 class="grid__item-title">#feed</h2>
-						<p class="grid__item-description">The new kid on the block</p>
-					</div>
-				</div> -->
 			</div>
 		</main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>

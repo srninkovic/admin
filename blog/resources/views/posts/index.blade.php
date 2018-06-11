@@ -25,7 +25,6 @@
 							<th>Title</th>
 							{{-- <th>Author</th> --}}
 							<th>Content</th>
-							{{-- <th>Category</th> --}}
 							<th>Date</th>
 							<th>&nbsp;</th>
 						</tr>
@@ -50,11 +49,6 @@
 												{{ $post->post_content }}
 											@endif
 										</td>
-									{{--	<td>
-											<a href="#">
-												{{ $post->category_ID }}
-											</a>
-										</td> --}}
 										<td>Published {{ date( 'j/m/Y', strtotime( $post->created_at ) ) }}</td>
 										<td>
                                             <form class="d-inline" action="{{ route('posts.destroy', $post->id) }}" method="POST">

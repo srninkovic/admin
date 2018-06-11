@@ -159,23 +159,6 @@
                         </div>
 
 						<div class="form-group">
-							<label for="title">Category</label> <br/>
-
-							<?php $categories = Helper::get_categories(); ?>
-							<select name="category_ID" id="category_ID">
-								<?php
-									if( $categories ) {
-										foreach( $categories as $category ) {
-											?>
-												<option value="{{ $category->id }}" {{ $category->id == $post->category_ID ? 'selected="selected"' : '' }}>{{ $category->category_name }}</option>
-											<?php
-										}
-									}
-								?>
-							</select>
-						</div>
-
-						<div class="form-group">
 							<label for="post_thumbnail">image0</label> <br/>
 							<input type="file" name="post_thumbnail" id="post_thumbnail" />
 
