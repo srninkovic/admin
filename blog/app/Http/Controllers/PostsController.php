@@ -12,6 +12,13 @@ use Session;
 
 class PostsController extends Controller
 {
+
+    public function getIndex() {
+        $posts = Post::where('post_type', 'post')
+                ->orderBy('created_at', 'desc')
+                ->paginate( 6 );
+        return view('posts.index', ['posts' => $posts]);
+    }
     /**
      * Display a listing of the resource.
      *

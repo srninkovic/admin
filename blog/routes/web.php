@@ -11,14 +11,13 @@ Route::get('/', function(){
 //
 //## ADMINPANEL
 //
-Route::get('/admin', 'PagesController@getIndex')->name('home');
+Route::get('/admin', 'PostsController@getIndex')->name('home');
 
 // Making sure our search term does only contains word and digit
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 
 Route::get('article/{slug}', 'ArticlesController@getSingle')->name('single');
 Route::get('articles', 'ArticlesController@getIndex');
-Route::resource('pages', 'PagesController');
 Route::resource('posts', 'PostsController');
 Route::resource('categories', 'CategoriesController');
 Route::resource('comments', 'CommentsController');
