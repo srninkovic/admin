@@ -11,7 +11,7 @@ Route::get('/', function(){
 //
 //## ADMINPANEL
 //
-Route::get('/adminpanel', 'PagesController@getIndex')->name('home');
+Route::get('/admin', 'PagesController@getIndex')->name('home');
 
 // Making sure our search term does only contains word and digit
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
